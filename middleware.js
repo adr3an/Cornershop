@@ -83,7 +83,7 @@ module.exports.validateProduct = (req, res, next) => {
             brand: Joi.string().required().escapeHTML(),
             name: Joi.string().required().escapeHTML(),
             price: Joi.string().required().min(0).escapeHTML(),
-            image: Joi.string().required().escapeHTML(),
+            image: Joi.string().required(),
             description: Joi.string().escapeHTML(),
             category: Joi.string().escapeHTML()
         }).required()
