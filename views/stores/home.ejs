@@ -1,0 +1,44 @@
+<% layout('layout/boilerplate') -%>
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-6">
+
+            <div class="card shadow p-3 mb-5 bg-body rounded" style="width: 22rem;">
+                <h1 class="text-center">Corner Shop</h1>
+                <div class="card-body">
+                    <h2 class="text-center text-muted">Login User</h2>
+                    <form action="/stores/login" method="POST" class="row g-3 needs-validation" novalidate>
+                        <div class="mb-1">
+                            <label for="name" class="form-label">Store Name:</label>
+                            <input type="text" class="form-control" id="name" name="username"
+                                placeholder="Enter the name of the store here" required>
+                            <div class="m-0 valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Cannot be empty
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="email" name="password"
+                                placeholder="Enter store password" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Must be an email
+                            </div>
+                        </div>
+
+
+
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

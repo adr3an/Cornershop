@@ -111,7 +111,7 @@ app.use('/products', productRoutes);
 app.use('/stores', storeRoutes);
 
 app.get('/', (req, res) => {
-    res.render('products/index');
+    res.redirect("/products")
 });
 
 
