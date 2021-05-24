@@ -1,0 +1,96 @@
+<% layout('layout/boilerplate') -%>
+
+<body>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-6 offset-4">
+
+                <div class="card shadow p-3 mb-5 bg-body rounded" style="width: 22rem;">
+                    <h1 class="text-center">Corner Shop</h1>
+                    <h3 class="text-center text-muted"> <%= store.name %> Store</h3>
+                    <div class="card-body">
+                        <form action="/stores/<%= id %>/products" method="POST" class="row g-3 needs-validation"
+                            novalidate>
+                            <div class="mb-1">
+                                <label for="brand" class="form-label">Product Brand:</label>
+                                <input type="text" class="form-control" id="brand" name="product[brand]"
+                                    placeholder="Enter the brand of the product here" required>
+                                <div class="m-0 valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Cannot be empty
+                                </div>
+                            </div>
+                            <div class="mb-1">
+                                <label for="name" class="form-label">Product Name:</label>
+                                <input type="text" class="form-control" id="name" name="product[name]"
+                                    placeholder="Enter the name of the product here" required>
+                                <div class="m-0 valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Cannot be empty
+                                </div>
+                            </div>
+                            <div class="mb-1">
+                                <label for="price" class="form-label">Price</label>
+                                <input type="text" class="form-control" id="price" name="product[price]"
+                                    placeholder="Enter product price" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Cannot be empty
+                                </div>
+                            </div>
+                            <div class="mb-1">
+                                <label for="image" class="form-label">Image</label>
+                                <input type="text" class="form-control" id="image" name="product[image]"
+                                    placeholder="Enter product Image URL" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Cannot be empty
+                                </div>
+                            </div>
+                            <div class="mb-1">
+                                <label for="description" class="form-label">Description</label>
+                                <input type="text" class="form-control" id="description" name="product[description]"
+                                    placeholder="Enter product description" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Cannot be empty
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="category" class="form-label">Category</label>
+                                <select name="product[category]" class="form-select" id="category">
+                                    <% for(category of categories){ %>
+                                    <option value="<%= category %>">
+                                        <%= category %>
+                                    </option>
+                                    <% } %>
+                                </select>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    cannot be empty
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <a href="/products">All Products</a>

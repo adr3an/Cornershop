@@ -1,0 +1,48 @@
+<% layout('layout/boilerplate') -%>
+
+
+<body>
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-6 offset-3">
+                <h1>
+                    All Stores
+                </h1>
+                <ul>
+                    <% for (let store of stores){ %>
+                    <% if (store.user ==='store'){ %>
+                    <li>
+
+                        <a href="/stores/<%= store._id %>">
+                            <%= store.username %>
+                        </a>
+
+                    </li>
+                    <% } %>
+                    <% } %>
+                </ul>
+
+                <div class="container-fluid p-0">
+
+                    <div class="row">
+                        <div class="col-4 p-0">
+                            <a href="/stores" style="width: 100%;" type="button" class="btn btn-primary">All
+                                Stores</a>
+
+                        </div>
+                        <div class="col-4 p-0">
+                            <a style="width: 100%;" href="/products" type="button" class="btn btn-success">All Products
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <a href="/stores/register">Add Store</a>
+    <a href="/products">View All Products</a>
+    <script src="" async defer></script>

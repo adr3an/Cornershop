@@ -1,0 +1,106 @@
+<%- layout('layout/boilerplate') %>
+<div class="container">
+
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="text-center"> <%=store.username %> </h1>
+                    <ul>
+
+                        <li>
+                            Email:<%= store.email %>
+                        </li>
+                        <li>
+                            Address: <%= store.address %>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-8 offset-2 mt-5">
+            <div class="card" style="width: 100%;">
+                <div class="card-title">
+                    <h2 class="text-center">Products</h2>
+                </div>
+                <div class="card-body">
+
+
+                    <ul>
+                        <% for(let product of store.products){ %>
+                        <li>
+                            <a href="/products/<%= product._id %> ">
+                                <%= product.name %>
+                            </a>
+                        </li>
+                        <% } %>
+
+                    </ul>
+
+                    <% if(currentUser){ %>
+                    <% if(currentUser.user==='admin'){ %>
+
+                    <div class="container-fluid p-0">
+
+                        <div class="row">
+                            <div class="col-4 p-0">
+                                <a href=" /stores" style="width: 100%;" type="button" class="btn btn-primary">All
+                                    Stores</a>
+
+                            </div>
+                            <div class="col-4 p-0">
+                                <a style="width: 100%;" href="/stores/<%= store._id %>/products/new" type="button"
+                                    class="btn btn-success">Add New
+                                </a>
+
+                            </div>
+                            <div class="col-4 p-0">
+                                <form action="/stores/<%= store._id %>?_method=DELETE" method="POST">
+                                    <button style="width: 100%;" class="btn btn-danger">delete</button>
+                                </form>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <% }else if(currentUser._id.equals(store._id)){ %>
+                    <div class="container-fluid p-0">
+
+                        <div class="row">
+                            <div class="col-4 p-0">
+                                <a href=" /stores" style="width: 100%;" type="button" class="btn btn-primary">All
+                                    Stores</a>
+
+                            </div>
+                            <div class="col-4 p-0">
+                                <a style="width: 100%;" href="/stores/<%= store._id %>/products/new" type="button"
+                                    class="btn btn-success">Add New
+                                </a>
+
+                            </div>
+                            <div class="col-4 p-0">
+                                <form action="/stores/<%= store._id %>?_method=DELETE" method="POST">
+                                    <button style="width: 100%;" class="btn btn-danger">delete</button>
+                                </form>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <% } %>
+                    <% } %>
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<script src="" async defer></script>

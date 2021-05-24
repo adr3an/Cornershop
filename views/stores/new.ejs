@@ -1,0 +1,103 @@
+<% layout('layout/boilerplate') -%>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-6 offset-4">
+
+            <div class="card shadow p-3 mb-5 bg-body rounded" style="width: 22rem;">
+                <h1 class="text-center">Corner Shop</h1>
+                <div class="card-body">
+                    <h2 class="text-center text-muted">Add New User</h2>
+                    <form action="/stores/register" method="POST" class="row g-3 needs-validation" novalidate>
+                        <div class="mb-1">
+                            <label for="name" class="form-label">Store Name:</label>
+                            <input type="text" class="form-control" id="name" name="username"
+                                placeholder="Enter the name of the store here" required>
+                            <div class="m-0 valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Cannot be empty
+                            </div>
+                        </div>
+                        <div class="mb-1">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="address" name="address"
+                                placeholder="Enter store address" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Cannot be empty
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="Enter store email" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Must be an email
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="email" name="password"
+                                placeholder="Enter store password" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Must be an email
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="user" class="form-label">Type of User</label>
+                            <select name="user" class="form-select" id="user">
+                                <% for(user of users){ %>
+                                <% if(currentUser){ %>
+                                <% if(currentUser.user === 'admin'){ %>
+                                <option value="<%= user %>">
+                                    <%= user %>
+                                </option>
+                                <% }else if(currentUser.user !== 'admin'){ %>
+                                <% if(user !=="admin"){ %>
+                                <option value="<%= user %>">
+                                    <%= user %>
+                                </option>
+                                <% } %>
+                                <% } %>
+                                <% }else{%>
+                                <% if(user !=="admin"){ %>
+                                <option value="<%= user %>">
+                                    <%= user %>
+                                </option>
+                                <% } %>
+                                <% } %>
+                                <% } %>
+                            </select>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                cannot be empty
+                            </div>
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<a href="/products">All Products</a>
+
+<script src="" async defer></script>

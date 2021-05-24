@@ -1,0 +1,52 @@
+<% layout('layout/boilerplate') -%>
+
+<div class="container">
+    <div class="row">
+        <div class="col mt-5">
+            <h3> <%= product.brand.toUpperCase() %> <%= product.name.toUpperCase() %></h3>
+            <div class="card" style="width: 100%;">
+                <div class="card-header">
+                    Details
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"> Store: <a href="/stores/<%=product.store._id %>">
+                            <%= product.store.username %>
+                        </a></li>
+                    <li class="list-group-item">Category: <a href="/products?category=<%= product.category%>">
+                            <%= product.category.toUpperCase() %>S
+                        </a>
+                    </li>
+                    <li class="list-group-item"> Price: $<%= product.price %></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col mt-5 d-flex justify-content-center">
+            <figure class="figure">
+                <img src="<%=product.image%>" class="figure-img img-fluid rounded" alt="...">
+                <figcaption class="figure-caption text-start"><%=product.description%>.</figcaption>
+            </figure>
+        </div>
+    </div>
+</div>
+
+
+
+<% if(currentUser){ %>
+<% if(currentUser.user==='admin'){ %>
+<a href="/products">All Products</a>
+<a href="/stores">All Stores</a>
+<a href="/products/<%= product._id %>/edit">Edit</a>
+<form action="/products/<%= product._id %>?_method=DELETE" method="POST">
+    <button>delete</button>
+</form>
+<% } %>
+<% if(currentUser._id.equals(product.store.id)){ %>
+<a href="/products">All Products</a>
+<a href="/stores">All Stores</a>
+<a href="/products/<%= product._id %>/edit">Edit</a>
+<form action="/products/<%= product._id %>?_method=DELETE" method="POST">
+    <button>delete</button>
+</form>
+
+<% } %>
+<% } %>
