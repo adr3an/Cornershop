@@ -59,21 +59,25 @@ module.exports.isStoreOrAdmin = (req, res, next) => {
 }
 
 module.exports.isAuth = async (req, res, next) => {
-    const { id } = req.params;
-    const store = await Store.findById(id);
-    const product = await Product.findById(id);
-    if (store) {
-        if (!store.equals(req.user._id)) {
-            req.flash('error', 'You dont have permission');
-            return res.redirect(`/stores/${id}`);
+    if (req.user.user !== 'admin') {
+        const { id } = req.params;
+        const store = await Store.findById(id);
+        const product = await Product.findById(id);
+        if (store) {
+            if (!store.equals(req.user._id)) {
+                req.flash('error', 'You dont have permission');
+                return res.redirect(`/stores/${id}`);
+            }
+            next();
+        } else {
+            if (!product.store.equals(req.user._id)) {
+                req.flash('error', 'You dont have permission');
+                return res.redirect(`/stores`);
+            }
+            next()
         }
-        next();
     } else {
-        if (!product.store.equals(req.user._id)) {
-            req.flash('error', 'You dont have permission');
-            return res.redirect(`/stores`);
-        }
-        next()
+        next();
     }
 }
 

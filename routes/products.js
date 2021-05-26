@@ -51,7 +51,7 @@ router.get('/:id/edit', isLoggedIn, isAuth, catchAsync(async (req, res) => {
 router.put('/:id', isLoggedIn, isAuth, validateProduct, catchAsync(async (req, res) => {
     const { id } = req.params;
     await Product.findByIdAndUpdate(id, req.body.product, { runValidators: true, new: true });
-    req.flash('success', 'Campground successfully edited')
+    req.flash('success', 'Product successfully edited')
     res.redirect(`/products/${id}`)
 }));
 
